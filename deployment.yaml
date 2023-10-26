@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-containerization
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: spring-containerization
+  template:
+    metadata:
+      labels:
+        app: spring-containerization
+    spec:
+      containers:
+        - name: spring-containerization
+          image: prasannabalajims/spring-containerization:0.0.2
+          ports:
+            - containerPort: 8080
+        - name: welcome-to-docker
+          image: prasannabalajims/welcome-to-docker:latest
+          ports:
+            - containerPort: 3000
